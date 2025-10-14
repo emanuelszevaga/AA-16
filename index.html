@@ -54,21 +54,14 @@
             </aside>
 
             <main class="board-card">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <div style="display:flex;align-items:center;gap:8px">
-                        <div class="player-dot dot-x"></div><div class="small">X</div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px">
-                        <div class="player-dot dot-o"></div><div class="small">O</div>
-                    </div>
-                </div>
+                <!-- Removed the player indicator dots and labels above the board -->
 
             <div class="board" id="board"></div>
 
             <div style="display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap">
-                <button class="btn" id="undo">Deshacer</button>
-                <button class="btn" id="hint">Sugerencia</button>
-                <div class="small">| Haz clic en "Sugerencia" para que el CPU sugiera una jugada.</div>
+                <!-- Added pink-btn class to make these buttons pink -->
+                <button class="btn pink-btn" id="undo">Deshacer</button>
+                <button class="btn pink-btn" id="hint">Sugerencia</button>
             </div>
             </main>
         </div>

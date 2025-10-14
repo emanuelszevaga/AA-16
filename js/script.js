@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let board = Array(9).fill(""); // las 9 casillas del tablero
 let current = "X"; //jugador actual
 let gameOver = false;
-let mode = "pvp"; // "pvp" o "pvc"
+let mode = "pvp"; // modo de juego "pvp" o "pvc"
 let startPlayer = "X"; // jugador que empieza
 let history = []; // guarda estados anteriores del tablero para deshacer
 
@@ -62,7 +62,7 @@ function handleMove(i) {
     }
 
     // cambia el turno
-    current = current === "X" ? "O" : "X";
+    current = current == "X" ? "O" : "X";
     updateStatus();
 
     // si el modo es contra la compu y le toca a O, ejecuta la jugada automáticamente
@@ -190,9 +190,9 @@ function bestMove(b, player) {
 // función recursiva del algortimo MiniMax
 function minimax(b, depth, isMax, player, opponent) {
     const winner = checkWinner(b);
-    if (winner === player) return 10 - depth;
-    if (winner === opponent) return depth - 10;
-    if (winner === "T") return 0;
+    if (winner == player) return 10 - depth;
+    if (winner == opponent) return depth - 10;
+    if (winner == "T") return 0;
 
     const current = isMax ? player : opponent;
     const scores = [];
