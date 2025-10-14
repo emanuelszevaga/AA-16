@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Tatetí</title>
+        <link rel="stylesheet" href="css\style.css">
+    </head>
+    <body>
+        <div class="container">
+            <aside class="sidebar">
+            <div>
+                <h1>Tatetí</h1>
+                <p class="lead">Juega 1 vs 1 o contra la computadora.</p>
+            </div>
+
+            <div class="scoreboard">
+                <div class="score">
+                    <div class="small">Jugador X</div>
+                    <strong id="scoreX">0</strong>
+                </div>
+                <div class="score">
+                    <div class="small">Empates</div>
+                    <strong id="scoreT">0</strong>
+                </div>
+                <div class="score">
+                    <div class="small">Jugador O</div>
+                    <strong id="scoreO">0</strong>
+                </div>
+            </div>
+
+            <div>
+                <div class="small">Modo</div>
+                <div class="controls">
+                    <button class="btn" id="btnPvP">2 jugadores</button>
+                    <button class="btn" id="btnPvC">Vs CPU</button>
+                </div>
+            </div>
+
+            <div>
+                <div class="small">Empezar jugador</div>
+                <div class="controls">
+                    <button class="btn" id="startX">X</button>
+                    <button class="btn" id="startO">O</button>
+                </div>
+            </div>
+
+            <div class="footer-row">
+                <button class="btn primary" id="resetAll">Reiniciar todo</button>
+                <button class="btn ghost" id="newRound">Nueva ronda</button>
+            </div>
+
+            <div class="message" id="status">Turno: <strong id="turnText">X</strong></div>
+            </aside>
+
+            <main class="board-card">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="player-dot dot-x"></div><div class="small">X</div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div class="player-dot dot-o"></div><div class="small">O</div>
+                    </div>
+                </div>
+
+            <div class="board" id="board"></div>
+
+            <div style="display:flex;gap:8px;align-items:center;margin-top:12px;flex-wrap:wrap">
+                <button class="btn" id="undo">Deshacer</button>
+                <button class="btn" id="hint">Sugerencia</button>
+                <div class="small">| Haz clic en "Sugerencia" para que el CPU sugiera una jugada.</div>
+            </div>
+            </main>
+        </div>
+
+        <div class="celebrate" id="celebrate"></div>
+
+        <script src="js\script.js"></script>
+    </body>
+</html>
