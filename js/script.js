@@ -161,28 +161,49 @@ function checkWinner(b) {
     ];
 
     for (const [a, c, d] of combos) {
-    if (b[a] && b[a] === b[c] && b[a] === b[d]) return b[a];
+    if (b[a] && b[a] == b[c] && b[a] == b[d]) return b[a];
     }
 
     return b.every((v) => v) ? "T" : null;
 }
 
 // algoritmo MiniMax: el CPU analiza todas las opciones posibles
+
+// función principal para decidir la mejor jugada en el tablero actual
 function bestMove(b, player) {
-    const opponent = player === "X" ? "O" : "X";
+    // determina quién es el oponente. Si 'player' es "X", 'opponent' es "O", y viceversa.
+    const opponent = player == "X" ? "O" : "X";
+    // inicializa la mejor puntuación posible a un valor muy bajo (menos infinito).
+    // esto asegura que cualquier puntuación válida será considerada mejor inicialmente.
     let bestScore = -Infinity;
+    // variable para almacenar el índice (posición) de la mejor jugada encontrada.
     let move;
 
+    // itera sobre todas las celdas del tablero (b) para simular cada posible jugada.
     b.forEach((cell, i) => {
-    if (!cell) {
-        b[i] = player;
-        const score = minimax(b, 0, false, player, opponent);
-        b[i] = "";
-        if (score > bestScore) {
-        bestScore = score;
-        move = i;
+        // comprueba si la celda actual (cell) está vacía (falsy value).
+        if (!cell) {
+            // 1. SIMULAR JUGADA: coloca temporalmente la ficha del 'player' en la posición 'i'.
+            b[i] = player;
+            // 2. EVALUAR JUGADA: Llama a la función recursiva minimax para evaluar esta jugada.
+            //    - b: El tablero con la jugada simulada.
+            //    - 0: La profundidad inicial del árbol de juego.
+            //    - false: Indica que el SIGUIENTE turno a evaluar es el del oponente (el Minimizador).
+            //    - player: El jugador actual (Maximizador).
+            //    - opponent: El oponente (Minimizador).
+            const score = minimax(b, 0, false, player, opponent);
+
+             // 3. DESHACER JUGADA (Backtracking): Limpia la celda para restaurar el tablero
+            //    a su estado original antes de la simulación, permitiendo probar otras jugadas.
+            b[i] = "";
+
+             // 4. ACTUALIZAR MEJOR JUGADA: Comprueba si la puntuación de esta jugada simulada
+            //    es la mejor encontrada hasta ahora.
+            if (score > bestScore) {
+            bestScore = score;
+            move = i;
+            }
         }
-    }
     });
 
     return move;
